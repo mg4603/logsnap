@@ -37,3 +37,18 @@ def read_config(path: Path = CONFIG_PATH) -> Config:
             Path.home() / "logsnap-snapshots",
         ),
     )
+
+
+def write_config(config: Config, path: Path = CONFIG_PATH) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+
+    data = {
+        "general": {
+            "default_format": config.default_format,
+            "snapshot_dir": config.snapshot_dir,
+        },
+        "sources": {"files": config.files},
+    }
+
+    with path.open("wb") as f:
+        tomli_w.dump(data, f)
