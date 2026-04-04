@@ -1,4 +1,5 @@
 # logsnap
+![CI](https://github.com/mg4603/logsnap/actions/workflows/ci.yml/badge.svg)
 
 > Short description of what this project does.
 
