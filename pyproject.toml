@@ -25,3 +25,7 @@ logsnap = "logsnap.main:app"
 
 [tool.pytest.ini_options]
 addopts = "-v"
+
+[tool.ruff]
+line-length = 64
+target-version = "py311"
