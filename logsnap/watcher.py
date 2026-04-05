@@ -4,8 +4,12 @@ import sys
 import time
 from pathlib import Path
 from typing import TextIO
+from datetime import datetime
 
 POLL_INTERVAL = 0.1
+SESSION_PATH = (
+    Path.home() / ".local" / "share" / "logsnap" / "session.log"
+)
 
 
 def tail_file(f: object, keyword: str | None) -> list[str]:
@@ -18,7 +22,11 @@ def tail_file(f: object, keyword: str | None) -> list[str]:
                 keyword is None
                 or keyword.lower() in line.lower()
             ):
-                lines.append(line.rstrip("\n"))
+                timestamp = datetime.now().strftime(
+                    "%Y-%m-%dT%H:%M:%S"
+                )
+                clean = line.rstrip("\n")
+                lines.append(f"{timestamp}|{clean}")
             line = f.readline()
     except OSError as e:
         print(
@@ -64,16 +72,21 @@ def poll_files(
 
     for path, f in handles.items():
         for line in tail_file(f, keyword):
-            lines.append(f"[{path.name}] {line}")
+            lines.append(f"{path}|{line}")
 
     return lines
 
 
 def start_watch(
-    file_paths: list[str], keyword: str | None = None
+    file_paths: list[str],
+    keyword: str | None = None,
+    session_path: Path = SESSION_PATH,
 ) -> None:
     """Tail multiple log files and return to terminal"""
+    session_path.parent.mkdir(parents=True, exist_ok=True)
+
     handles = open_handles(file_paths)
+    session_file = session_path.open("w")
 
     if not handles:
         print(
@@ -91,6 +104,8 @@ def start_watch(
         while True:
             for line in poll_files(handles, keyword):
                 print(line)
+                session_file.write(line + "\n")
+                session_file.flush()
 
             time.sleep(POLL_INTERVAL)
 
@@ -99,3 +114,4 @@ def start_watch(
     finally:
         for f in handles.values():
             f.close()
+        session_file.close()
