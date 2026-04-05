@@ -1,5 +1,4 @@
 import pytest
-from pathlib import Path
 from logsnap.config import Config, read_config, write_config
 
 
