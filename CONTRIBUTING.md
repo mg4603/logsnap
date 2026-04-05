@@ -26,5 +26,5 @@ Follow conventional commits:
 
 ## Running tests
 ```bash
-pytest
+python -m pytest
 ```
