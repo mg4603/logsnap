@@ -22,3 +22,6 @@ dev = [
 
 [project.scripts]
 logsnap = "logsnap.main:app"
+
+[tool.pytest.ini_options]
+addopts = "-v"
