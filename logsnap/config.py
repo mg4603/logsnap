@@ -18,7 +18,10 @@ class Config:
     snapshot_dir: str = str(Path.home() / "logsnap-snapshots")
 
 
-def read_config(path: Path = CONFIG_PATH) -> Config:
+def read_config(path: Path | None = None) -> Config:
+    if path is None:
+        path = CONFIG_PATH
+
     if not path.exists():
         raise FileNotFoundError(
             f"Config file not found at {path}.\n"
@@ -42,8 +45,11 @@ def read_config(path: Path = CONFIG_PATH) -> Config:
 
 
 def write_config(
-    config: Config, path: Path = CONFIG_PATH
+    config: Config, path: Path | None = None
 ) -> None:
+    if path is None:
+        path = CONFIG_PATH
+
     path.parent.mkdir(parents=True, exist_ok=True)
 
     data = {
