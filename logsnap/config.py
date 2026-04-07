@@ -6,7 +6,9 @@ from dataclasses import dataclass, field
 
 import tomli_w
 
-CONFIG_PATH = Path.home() / ".config" / "logsnap" / "config.toml"
+CONFIG_PATH = (
+    Path.home() / ".config" / "logsnap" / "config.toml"
+)
 
 
 @dataclass
@@ -39,7 +41,9 @@ def read_config(path: Path = CONFIG_PATH) -> Config:
     )
 
 
-def write_config(config: Config, path: Path = CONFIG_PATH) -> None:
+def write_config(
+    config: Config, path: Path = CONFIG_PATH
+) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
 
     data = {
