@@ -5,6 +5,7 @@ from typing import Optional
 from logsnap.watcher import start_watch
 from logsnap.config import read_config
 from logsnap.snapshot import run_snap
+from logsnap.config_cmd import config_app
 
 
 class OutputFormat(str, Enum):
@@ -13,6 +14,7 @@ class OutputFormat(str, Enum):
 
 
 app = typer.Typer()
+app.add_typer(config_app)
 
 
 @app.command()

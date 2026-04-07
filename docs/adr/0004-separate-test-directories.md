@@ -22,7 +22,7 @@ placed in `tests/integration/`.
 ### Positive
 - Clear logical separation of tests by type
 
-### Negatives
+### Negative
 - Upfront organizational overhead
 - Encourage rigid boundaries leading to duplicated config and
   adjustments to tooling
