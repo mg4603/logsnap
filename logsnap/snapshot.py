@@ -58,7 +58,7 @@ def run_snap(
     session_path: Path = SESSION_PATH,
 ) -> None:
     fmt = format_override or config.default_format
-    snapshot_dir = Path(config.snapshot_dir)
+    snapshot_dir = Path(config.snapshot_dir).expanduser()
     snapshot_dir.mkdir(parents=True, exist_ok=True)
 
     snapshot_filename = (

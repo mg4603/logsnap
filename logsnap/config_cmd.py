@@ -25,7 +25,7 @@ def init() -> None:
 
     snapshot_dir: str = typer.prompt(
         "Directory in which to store logsnap snapshots.",
-        default="~/.config/logsnap/logsnap_snapshots/",
+        default="~/logsnap_snapshots/",
     )
 
     default_format: str = typer.prompt(
