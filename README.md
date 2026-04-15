@@ -73,7 +73,7 @@ contribution guidelines.
 
 ## Architecture decisions
 All architectural decisions are documented in 
-[docs/adr] (docs/adr).
+[docs/adr](docs/adr).
 
 ## License
 
