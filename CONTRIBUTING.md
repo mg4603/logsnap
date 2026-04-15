@@ -2,10 +2,10 @@
 
 ## Branch Naming
 
-- feat/<short-description>
-- fix/<short-description>
-- chore/<short-description>
-- docs/<short-description>
+- `feat/<short-description>`
+- `fix/<short-description>`
+- `chore/<short-description>`
+- `docs/<short-description>`
 
 ## Commit Messages
 
