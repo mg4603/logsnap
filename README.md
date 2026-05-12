@@ -16,12 +16,11 @@ by keyword, and snapshot the output for later analysis.
 ![demo](demo.gif)
 
 ## Installation
+Clone the repo and install locally:
 ```bash
-pipx install logsnap
-```
-Or with pip:
-```bash
-pip install logsnap
+git clone https://github.com/mg4603/logsnap.git
+cd logsnap
+pipx install .
 ```
 
 ## Quickstart
