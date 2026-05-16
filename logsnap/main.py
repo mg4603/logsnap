@@ -13,7 +13,7 @@ class OutputFormat(str, Enum):
     jsonl = "jsonl"
 
 
-app = typer.Typer()
+app = typer.Typer(name="logsnap", no_args_is_help=True)
 app.add_typer(config_app)
 
 
